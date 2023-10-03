@@ -1,0 +1,22 @@
+%{                                                                                                                                                                      
+#include<stdio.h>                                                                                                                                                       
+#include<stdlib.h>                                                                                                                                                      
+#include<ctype.h>                                                                                                                                                       
+#include "y.tab.h"                                                                                                                                                      
+extern int yyval;                                                                                                                                                       
+%}                                                                                                                                                                      
+                                                                                                                                                                        
+%%                                                                                                                                                                      
+[ \t] ;                                                                                                                                                                 
+"(" return openp;                                                                                                                                                       
+")" return closep;                                                                                                                                                      
+[0-9]+ {yylval=atoi(yytext);return NUM;}                                                                                                                                
+"+" return add;                                                                                                                                                         
+"-" return sub;                                                                                                                                                         
+"*" return mul;                                                                                                                                                         
+"/" return di;                                                                                                                                                          
+. return(yytext[0]);                                                                                                                                                    
+\n return NL;                                                                                                                                                           
+                                                                                                                                                                        
+%%                                                                                                                                                                      
+                    
